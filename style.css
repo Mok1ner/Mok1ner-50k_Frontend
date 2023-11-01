@@ -1,0 +1,497 @@
+   /* Оброщение бывают следующих типов:
+        1) + Теги p   
+        2) + Класс .
+        3) + ID #
+        4) + Атрибуты [] 
+        */
+   /*базовые настройкий*/
+   /*  -- --- -   *- означает обращение ко всем элементам сайта */
+
+   * {
+   	box-sizing: border-box;
+   }
+
+
+   body,
+   p {
+   	margin: 0;
+   }
+
+   /* конец базовых настроек страницы*/
+
+
+   /*  Уневерсальные стили   */
+
+   .m-l10 {
+   	margin-left: 10px;
+   }
+
+   .m-l101 {
+   	margin-left: 10px;
+   }
+
+   .red {
+   	color: red;
+   }
+
+   .orange {
+   	color: orange;
+   }
+
+   .blue {
+   	color: blue;
+   }
+
+   .rgb {
+   	color: rgb(180, 180, 181);
+   }
+
+   .br_green {
+   	background: green;
+   }
+
+   .br_orange {
+   	background: #ffcc33;
+   }
+
+   .br_blue {
+   	background: blue;
+   }
+
+   .dropdown_menu {
+   	display: none;
+   	position: absolute;
+   	background: white;
+   	border: 1px solid black;
+   	width: 100%;
+   	top: 42px;
+   	left: 0;
+   	z-index: 1;
+   }
+
+   .hover_menu li:hover .dropdown_menu {
+   	display: block;
+   }
+
+   .menu2 {
+   	display: none;
+   	position: absolute;
+   	background: white;
+   	border: 1px solid black;
+   	width: 100%;
+   	top: 42px;
+   	left: 0;
+   	z-index: 1;
+   }
+
+   .hover_menu li:hover .menu2 {
+   	display: block;
+   }
+
+   .menu3 {
+   	display: none;
+   	position: absolute;
+   	background: white;
+   	border: 1px solid black;
+   	width: 100%;
+   	top: 42px;
+   	left: 0;
+   	z-index: 1;
+   }
+
+   .hover_menu li:hover .menu3 {
+   	display: block;
+   }
+
+   /*  запятая означает дополнительное обращение к тому или инному элементу
+      это перечасление подключений новых Classов 
+       */
+
+   .left,
+   .ul_li>li {
+   	float: left;
+   	/* > эта стрелочка означает что оброщение будет происходит только от родительских элементтов*/
+   	/*  float:------- это обтикание тоесть выравнивание 
+       выравнивание       куда
+       выравнивание в левую сторону = float: left ;
+       выравнивание в правую  = float: ritgt ;  */
+   }
+
+   .right {
+   	float: right;
+   	/*  float:------- это обтикание тоесть выравнивание 
+       выравнивание       куда
+       выравнивание в левую сторону = float: left ;
+       выравнивание в правую  = float: ritgt ;  */
+   }
+
+   .ul_li,
+   ul {
+   	list-style: none;
+   	display: inline-block;
+   	margin: 0;
+   	padding: 0;
+   }
+
+   .ul_li li {
+   	padding: 10px 15px;
+
+   }
+
+   .b-r li {
+   	border-right: 1px solid #dadada;
+
+   	/* border-это границы , ширина, тип и цвет */
+   }
+
+   .b-r li:last-child {
+   	border-right: 0;
+   }
+
+   .conteiner {
+   	display: inline-block;
+		width:	95%;
+		margin-left: 30px;
+		margin-right: 50px;
+   }
+
+   /* конец Универсальные стили   */
+
+
+   /* стили для страницы*/
+
+   .verhnee_menu {
+   	background: #f7f7f7;
+   	display: inline-block;
+   	width: 100%;
+   }
+
+   .verhnee_menu .ul_li i {
+   	margin-right: 10px;
+   }
+
+   .verhnee_menu ul li {
+   	float: left;
+   }
+
+   .msg {
+   	position: absolute;
+   	top: -7px;
+   	right: 8px;
+   	background: red;
+   	width: 13px;
+   	height: 13px;
+   	text-align: center;
+   	color: white;
+   	font-size: 9px;
+   	line-height: 1.5;
+   	border-radius: 13px;
+   }
+
+   .icon_msg {
+   	position: relative;
+   }
+
+   .center_menu ul {
+   	display: flex;
+   	justify-content: space-between;
+   	align-items: center;
+   }
+
+   .sry_krg {
+   	background: rgb(232, 232, 232);
+   	width: 40px;
+   	height: 40px;
+   	display: inline-block;
+   	text-align: center;
+   	line-height: 2.5;
+   	border-radius: 20px;
+   	color: #4c4b6c;
+   }
+
+   .center_menu .right>p:first-child {
+   	font-weight: bold;
+   	color: #4c4b6c;
+
+   }
+
+   .center_menu .right>p {
+   	color: #ababab;
+   }
+
+   .nijnee_menu {
+   	display: inline-block;
+   	width: 100%;
+   	background: #f7f7f7;
+   	position: relative;
+   }
+
+   .sry_krg1 {
+   	background: yellow;
+   	width: 40px;
+   	height: 40px;
+   	display: inline-block;
+   	text-align: center;
+   	line-height: 2.5;
+   	border-radius: 20px;
+   	color: #4c4b6c;
+   }
+
+   /*17 urok*/
+   .block_ttle {
+   	display: flex;
+   	justify-content: space-between;
+   	align-items: center;
+   	border-bottom: 1px solid #e8e8e8;
+   }
+
+   section #product {
+   	padding: 15px;
+   }
+
+   .body_block {
+   	margin-top: 20px;
+   	/*display: inline-block;*/
+   }
+
+   .List_product>.product {
+   	float: left;
+   }
+
+   .block_stars {
+   	display: inline-block;
+   }
+
+   .block_stars>div {
+   	float: left;
+   }
+
+   /* Product style */
+
+   .product {
+   	display: inline-block;
+   	min-height: 310px;
+
+   }
+
+   .product img {
+   	width: 200px;
+   	height: 200px;
+   	overflow: hidden;
+   	object-fit: contain;
+   }
+
+   .body_product {
+   	margin-top: 10px;
+   }
+
+   .stars>i {
+   	color: #ffcc33;
+   	font-size: 10px;
+   	margin-left: -4px;
+   }
+
+   .stars>i :first-child {
+   	margin-left: 0;
+   }
+
+   .stars {
+   	margin-right: 10px;
+   }
+
+   .review {
+   	font-size: 13px;
+   	line-height: 1.7;
+   }
+
+   .price {
+   	display: inline-block;
+   	width: 100%;
+   	margin-top: -20px;
+   }
+
+   .price span {
+   	font-size: 20px;
+   	font-weight: bold;
+   	color: #4c4b6c;
+   }
+
+   .price del {
+   	font-size: 15px;
+   	margin-left: 12px;
+   	color: #9e9e9e;
+   	line-height: 2;
+   }
+
+   .btns li {
+   	padding: 0;
+   }
+
+   .btns .ul_li {
+   	display: flex;
+   	justify-content: space-evenly;
+   }
+
+   .btns .sry_krg {
+   	transition: .5s;
+   }
+
+   .btns li:hover .sry_krg {
+   	background: deepskyblue;
+   	color: white;
+   	cursor: pointer;
+   }
+
+   .dnone {
+   	display: none;
+   }
+
+   .product:hover .dnone {
+   	display: block;
+   }
+
+   .product:hover .block_stars {
+   	display: none;
+   }
+
+   .img {
+   	position: relative;
+   }
+
+   .desc_img {
+   	position: absolute;
+   	top: 0;
+   	left: 0;
+   	background: #ffffffb5;
+   	width: 100%;
+   	height: 100%;
+   	border: 1px solid #dcdcdcb5;
+   	display: flex;
+   	justify-content: center;
+   	align-items: center;
+   	opacity: 0;
+   	transition: 0.5s;
+   }
+
+   .product:hover .desc_img {
+   	opacity: 1;
+   }
+
+   .desc_img>p {
+   	width: 100%;
+   	display: inline-block;
+   }
+
+   .desc {
+   	width: 80%;
+   	text-align: center;
+   }
+
+   .ttl {
+   	font-size: 17px;
+   	font-weight: bold;
+   	margin-bottom: 5px;
+   }
+
+   .List_product {
+   	display: flex;
+   	justify-content: space-between;
+   }
+
+   .tooltip {
+   	position: absolute;
+   	right: 7px;
+   	top: 7px;
+   	background: #ffcc33;
+   	color: white;
+   	padding: 3px 6px;
+   	font-size: 13px;
+   	border-radius: 4px;
+   	z-index: 1;
+   }
+
+   #banner img {
+   	width: 100%;
+   }
+
+   .btn_call {
+   	text-align: center;
+   	margin-top: 20px;
+   }
+
+   .btn_call a {
+   	background: #7cd0f5;
+   	color: white;
+   	padding: 10px 30px;
+   	border-radius: 30px;
+   	cursor: pointer;
+   	transition: 0.5s;
+   }
+
+   .btn_call a:hover {
+   	background: #3696c0;
+   	;
+   }
+
+   .f_li_hover li {
+   	padding: 5px 0;
+   	transition: .5s;
+   }
+
+   .f_li_hover :hover {
+   	margin-left: 15px;
+   	font-weight: bold;
+   }
+
+   .f_ttle:before {
+   	content: "";
+   	width: 50px;
+   	height: 3px;
+   	background: #d2d2d2;
+   	position: absolute;
+   	bottom: -7px;
+   }
+
+   .f_ttle {
+   	position: relative;
+   	margin-bottom: 50px;
+   }
+
+   footer .ul_li li {
+   	padding: 2px;
+   }
+
+   .nijnee_menu .container>div {
+   	width: 45%;
+   }
+
+   /*@media (max-width:414px) {
+   	 @media - этот параметр нужен для того чтобы обратиться к размеру устройства пользователя
+			@media width - этот параметр нужен для того чтобы указать минимальную ширину блока и указать для него и для экранов ниже размером стили*/
+
+
+
+
+   /*данная запись говорит о том чтобы я мог получить размер экрана 414пх и использовал стили которые в нем будут заключены*/
+
+
+   /* Начало мобильной адаптации*/
+
+   @media (max-width: 1024px) {
+   	.container {
+   		width: auto;
+   	}
+
+   	.List_product {
+   		flex-wrap: wrap;
+   	}
+
+   	.product {
+   		margin-right: 25px;
+   	}
+   }
+
+
+   /* Конец мобильной адаптации*/
+
+   /* конец стилей для страницы*/
