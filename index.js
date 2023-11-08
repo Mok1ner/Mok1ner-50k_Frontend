@@ -107,8 +107,28 @@ console.log(obj["name"]);
 
 //Общее решение
 
-if (4 == 2) {
-  alert("Ответ Верный");
-} else {
-  alert("Ответ  Не  Верный");
-}
+//if (4 == 2) {
+//  alert("Ответ Верный");
+//} else {
+//  alert("Ответ  Не  Верный");
+//}
+
+//  массивы и псевдомасивы
+const arr2 = [1, 2, 3, 4, 5];
+// индексы нашего массива 0/1/2/3/4
+console.log(arr2);
+
+//console.log(arr2.pop())
+//for (let i = 0; i < arr2.length; i++) {
+//  console.log(arr2[i]);
+//}
+//for(let value of  arr2){
+//console.log(value)
+//}
+//arr2.forEach(function (item, index, arr2) {
+//console.log(item);
+//console.log(index);
+// console.log(
+//   "Индекс:" + index + " Значение:" + item + "  из  массива = " + arr2
+// );
+//});
