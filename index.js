@@ -132,3 +132,32 @@ console.log(arr2);
 //   "Индекс:" + index + " Значение:" + item + "  из  массива = " + arr2
 // );
 //});
+let a = 10;
+b = a;
+b = b + 15;
+console.log(b);
+
+const arr1 = {
+  a: 1,
+  b: 2,
+};
+console.log(arr1);
+
+function copy_arr(myobj) {
+  const newobj = {};
+  let key;
+  for (key in myobj) {
+    newobj[key] = myobj[key];
+  }
+  return newobj;
+}
+
+const oldobj = {
+  name: "Ilya",
+  surrname: "Mok",
+  hobby: {
+    1: "swimming",
+    2: "running",
+  },
+};
+console.log(copy_arr(oldobj));
