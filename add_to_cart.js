@@ -113,7 +113,7 @@ function name_fun(num) {
   let result;
 
   result = per_const + num;
-  console.log(result);
+  // console.log(result);
 }
 name_fun(num);
 
@@ -122,8 +122,8 @@ name_fun(num);
 // Методы и Свойства строк
 
 let text = "          Привет! как у тебя дела?            ";
-console.log(text);
-console.log(text.trim());
+// console.log(text);
+// console.log(text.trim());
 
 // Методы и Свойства чисел
 let number = 120;
@@ -134,7 +134,7 @@ let a = "10";
 let result;
 result = x + +a;
 
-console.log(result);
+// console.log(result);
 
 // Добавление товара в корзину
 let class_name = document.getElementsByClassName("add_cart");
@@ -185,6 +185,9 @@ let myFunction = function (evt) {
 
   //получить общее количество суммы товаров в корзине
   total_price();
+
+  //получить количество товаров в корзине
+  count_product();
 };
 
 for (var i = 0; i < class_name.length; i++) {
@@ -208,6 +211,7 @@ function delete_product() {
     this.parentNode.parentNode.remove();
 
     total_price();
+    count_product();
   }
 }
 
@@ -227,3 +231,20 @@ function total_price() {
     ".shopcard__total span"
   )[0].innerHTML = `$ ${total_price}`;
 }
+
+function count_product() {
+  let count_ptoduct = document.getElementsByClassName("bag__item").length;
+  document.getElementsByClassName("cart_count")[0].innerHTML = count_ptoduct;
+}
+
+const tabs = {
+  list_tabs: ["Лидеры продаж", "Новинки", "Распродажа"],
+};
+
+let creat_ul = document.createElement("ul");
+
+tabs.list_tabs.forEach((item, i) => {
+  creat_ul.innerHTML += `<li>${item}</li>`;
+});
+
+document.querySelector(".insert_listing").innerHTML += creat_ul.outerHTML;
