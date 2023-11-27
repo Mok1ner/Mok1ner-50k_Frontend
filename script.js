@@ -1,186 +1,79 @@
 (function () {
-    'use strict';
+	'use strict';
+
+	const   inputSom = document.querySelector("#som"),
+			inputUsd = document.querySelector("#usd");
+
+	inputSom.addEventListener( 'input', () =>{
+		
+		const request = new XMLHttpRequest();
+
+		request.open("GET", "current.json");
+		// request.open(method(GET/POST), url, asy, login, passw );
+		request.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+		request.send();
+
+		
+		request.addEventListener('load', () => {
+			
+			if(request.status === 200){
+				// console.log(request.response);
+				// console.log(JSON.parse(request.response));
+
+				const currency = JSON.parse(request.response);
+
+				const result = inputSom.value / currency.current.usd;
+
+				inputUsd.value = (result).toFixed(2);
+
+			} else {
+				inputUsd.value = "Что-то пошло не так";
+			}
+
+		});
+		
+
+		// status
+		// statusText
+		// respose
+		// readyState
 
 
-    // class ploshad {
-
-    //     constructor(width, height) {
-    //         this.width = width;
-    //         this.height = height;
-    //     }
-
-    //     calcPloshad() {
-    //         return this.width * this.height;
-    //     }
-
-    //     calcPloshad2() {
-    //         return this.width + this.height;
-    //     }
-
-    // }
-
-    // class ploshadText extends ploshad{
-    //     //extends связка двух классов
-
-    //     constructor(width, height, text, value) {
-    //         super(width, height);
-
-    //         this.text = text;
-    //         this.value = value;
-    //     }
-        
-    //     showText() {
-    //         console.log(`Text: ${this.text} | Value: ${this.value}`);
-    //     }
-
-    // }
-
-    // const block = new ploshadText(20, 20, "Ismar", "Тема урока Class");
-    
-    // block.showText();
-    // console.log(block.calcPloshad2());
+	});
 
 
 
-    class cardProduct {
-        
-        constructor(tooltips, tooltipsClass,  img, title, originPrice, oldPrice, innerBlock){
-            this.tooltips = tooltips;
-            this.tooltipsClass = tooltipsClass;
-            this.img = img;
-            this.title = title;
-            this.originPrice = originPrice;
-            this.oldPrice = oldPrice;
-            this.innerBlock = document.querySelector(innerBlock);
-            this.valuta = 85;
-            this.originPrice = this.convetToUSD(this.originPrice);
-            this.oldPrice = this.convetToUSD(this.oldPrice);
-        }
+	const   search      = document.querySelector("[name='search']"),
+			btnSearch   = document.querySelector(".search button"),
+			search_res	= document.querySelector(".search_result");
 
-        convetToUSD(price){
-            const result = price / this.valuta;
-            return result.toFixed(1);
-        }
+		btnSearch.addEventListener( 'click', (e) =>{
+		e.preventDefault();
 
-        render() {
-            const div = document.createElement("div");
-            div.classList.add("list__item");
-            div.innerHTML = `
-                            <div class="item__img">
-                                <div class="tooltips ${this.tooltipsClass}">
-                                    <span>${this.tooltips}</span>
-                                </div>
+		fetch('search.php', {
+			method: "POST",
+			body: JSON.stringify({query: search.value}),
+			headers:{
+				"Content-type": "application/json"
+			} 
+		})
+		.then(response => response.json())
+		.then(json => {
 
-                                <img src=${this.img} alt="">
+			let creat_ul = document.createElement('ul');
 
-                                <div class="arrows">
-                                    <span><i class="fas fa-arrows-alt"></i> Quick view</span>
-                                </div>
-                            </div>
-                            <div class="item__title">
-                                <a href="?search=#" class="ttl">${this.title}</a>
+			for (let i = 0; i < json.length; i++) {
+				
+				creat_ul.innerHTML += `<li>
+										<a href="${json[i].href}">${json[i].text}</a>
+										</li>`;
+				
+			}
 
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span>6 Review(s)</span>
-                                </div>
+			search_res.innerHTML = creat_ul.outerHTML;
+		})
+		.catch(() => console.log("Ошибка"));
 
-                                <div class="price">
-                                    <span class="currency">$</span>
-                                    <span class="oprice">${this.originPrice}</span>
-                                    <del>$ ${this.oldPrice}</del>
-                                </div>
-                            </div>
-
-                            <div class="item__hide">
-                                <div class="item__icon">
-                                    <a class="icon__hidden add_cart" href="#"><i class="fas fa-shopping-bag"></i></a>
-                                </div>
-
-                                <div class="item__icon">
-                                    <a class="icon__hidden" href="#"><i class="fas fa-balance-scale"></i></a>
-                                </div>
-
-                                <div class="item__icon">
-                                    <a class="icon__hidden" href="#"><i class="fas fa-heart"></i></a>
-                                </div>
-                            </div>
-            `;
-
-            this.innerBlock.append(div);
-
-        }
-    }
-
-    // tooltips, img, title, originPrice, oldPrice, innerBlock
-    new cardProduct(
-        'NEW',
-        'orange',
-        'img/Product/product.avif',
-        'Animal Print Sweatshirt 1',
-        1230,
-        2500,
-        '.main__list'
-    ).render();
-
-    new cardProduct(
-        'Sale',
-        'green',
-        'img/Product1/product1.avif',
-        'Animal Print Sweatshirt 2',
-        1230,
-        2500,
-        '.main__list'
-    ).render();
-
-    new cardProduct(
-        '-25',
-        'orange',
-        'img/Product2/product2.avif',
-        'Animal Print Sweatshirt 3',
-        1230,
-        2500,
-        '.main__list'
-    ).render();
-
-    new cardProduct(
-        'NEW',
-        'orange',
-        'img/Product3/product3.avif',
-        'Animal Print Sweatshirt 4',
-        1230,
-        2500,
-        '.main__list'
-    ).render();
-    
-    new cardProduct(
-        'NEW',
-        'green',
-        'img/Product5/product5.avif',
-        'Animal Print Sweatshirt 5',
-        1230,
-        2500,
-        '.main__list'
-    ).render();
-
-
-			const	Data ={
-				name: 'Ilya',
-				age: 29,
-					parent: {
-						parent1: "Alex",
-						parent2: "Rosa"
-					}
-			} ;
-
-			console.log(Data);
-			const newObj = JSON.parse(JSON.stringify(Data));
-			newObj.parent.parent1 = "Ilya";
-			console.log (newObj);
-
+	});
 
 }());
